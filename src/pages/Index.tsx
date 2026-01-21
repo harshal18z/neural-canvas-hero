@@ -7,13 +7,15 @@ import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
 import { AnimeNavBar } from "@/components/ui/anime-navbar";
 import { AiModelsList } from "@/components/ui/ai-models-preview";
 import { TechOrbitSection } from "@/components/ui/tech-orbit-section";
-import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu } from "lucide-react";
+import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard } from "lucide-react";
+import { BentoPricing } from "@/components/ui/bento-pricing";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Timeline", url: "#timeline", icon: Layers },
   { name: "Tech", url: "#showcase", icon: Image },
   { name: "Models", url: "#models", icon: Brain },
+  { name: "Pricing", url: "#pricing", icon: CreditCard },
   { name: "Stack", url: "#tech-stack", icon: Cpu },
 ];
 
@@ -234,6 +236,21 @@ const Index = () => {
       <section id="models" className="w-full bg-black py-24">
         <ScrollFadeSection className="max-w-7xl mx-auto px-6">
           <AiModelsList models={aiModels} />
+        </ScrollFadeSection>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="w-full bg-black py-24">
+        <ScrollFadeSection className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-extralight text-white mb-4">
+              Simple Pricing
+            </h2>
+            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+              Choose the perfect plan for your needs. Scale as you grow with flexible pricing options.
+            </p>
+          </div>
+          <BentoPricing />
         </ScrollFadeSection>
       </section>
 
