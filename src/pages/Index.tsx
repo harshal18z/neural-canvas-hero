@@ -5,12 +5,14 @@ import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
 import { AnimeNavBar } from "@/components/ui/anime-navbar";
-import { Calendar, Code, FileText, User, Clock, Home, Layers, Image } from "lucide-react";
+import { AiModelsList } from "@/components/ui/ai-models-preview";
+import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain } from "lucide-react";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Timeline", url: "#timeline", icon: Layers },
   { name: "Showcase", url: "#showcase", icon: Image },
+  { name: "Models", url: "#models", icon: Brain },
 ];
 
 const timelineData = [
@@ -102,6 +104,87 @@ const parallaxImages = [
   },
 ];
 
+const aiModels = [
+  {
+    id: "gpt-4o",
+    name: "GPT-4o",
+    provider: "OpenAI",
+    family: "GPT-4",
+    version: "2024-05",
+    description: "Most capable multimodal model with vision, audio, and text understanding.",
+    contextWindowTokens: 128000,
+    inputPricePer1KTokensUSD: 0.005,
+    outputPricePer1KTokensUSD: 0.015,
+    supports: { vision: true, functionCalling: true, streaming: true, jsonMode: true },
+    tags: ["multimodal", "flagship"],
+  },
+  {
+    id: "claude-3-opus",
+    name: "Claude 3 Opus",
+    provider: "Anthropic",
+    family: "Claude 3",
+    version: "2024-02",
+    description: "Most powerful Claude model for complex analysis and creative tasks.",
+    contextWindowTokens: 200000,
+    inputPricePer1KTokensUSD: 0.015,
+    outputPricePer1KTokensUSD: 0.075,
+    supports: { vision: true, functionCalling: true, streaming: true },
+    tags: ["reasoning", "creative"],
+  },
+  {
+    id: "gemini-pro",
+    name: "Gemini Pro",
+    provider: "Google",
+    family: "Gemini",
+    version: "1.5",
+    description: "Advanced multimodal model with long context and efficient processing.",
+    contextWindowTokens: 1000000,
+    inputPricePer1KTokensUSD: 0.00125,
+    outputPricePer1KTokensUSD: 0.005,
+    supports: { vision: true, functionCalling: true, streaming: true, audioIn: true },
+    tags: ["long-context", "efficient"],
+  },
+  {
+    id: "llama-3-70b",
+    name: "Llama 3 70B",
+    provider: "Meta",
+    family: "Llama 3",
+    version: "70B",
+    description: "Open-source large language model with strong general capabilities.",
+    contextWindowTokens: 8192,
+    inputPricePer1KTokensUSD: 0.0009,
+    outputPricePer1KTokensUSD: 0.0009,
+    supports: { streaming: true, functionCalling: true },
+    tags: ["open-source", "versatile"],
+  },
+  {
+    id: "mistral-large",
+    name: "Mistral Large",
+    provider: "Mistral AI",
+    family: "Mistral",
+    version: "2",
+    description: "European frontier model with excellent multilingual capabilities.",
+    contextWindowTokens: 128000,
+    inputPricePer1KTokensUSD: 0.004,
+    outputPricePer1KTokensUSD: 0.012,
+    supports: { functionCalling: true, streaming: true, jsonMode: true },
+    tags: ["multilingual", "european"],
+  },
+  {
+    id: "command-r-plus",
+    name: "Command R+",
+    provider: "Cohere",
+    family: "Command",
+    version: "R+",
+    description: "Enterprise-grade model optimized for RAG and business applications.",
+    contextWindowTokens: 128000,
+    inputPricePer1KTokensUSD: 0.003,
+    outputPricePer1KTokensUSD: 0.015,
+    supports: { functionCalling: true, streaming: true, toolUse: true },
+    tags: ["enterprise", "RAG"],
+  },
+];
+
 const Index = () => {
   useEffect(() => {
     const lenis = new Lenis();
@@ -164,6 +247,13 @@ const Index = () => {
         </ScrollFadeSection>
         
         <ZoomParallax images={parallaxImages} />
+      </section>
+
+      {/* AI Models Section */}
+      <section id="models" className="w-full bg-black py-24">
+        <ScrollFadeSection className="max-w-7xl mx-auto px-6">
+          <AiModelsList models={aiModels} />
+        </ScrollFadeSection>
       </section>
     </div>
   );
