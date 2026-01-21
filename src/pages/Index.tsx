@@ -1,5 +1,9 @@
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 import Hero from "@/components/ui/neural-network-hero";
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
+import { ZoomParallax } from "@/components/ui/zoom-parallax";
+import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
 import { Calendar, Code, FileText, User, Clock } from "lucide-react";
 
 const timelineData = [
@@ -60,7 +64,53 @@ const timelineData = [
   },
 ];
 
+const parallaxImages = [
+  {
+    src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
+    alt: 'Modern architecture building',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
+    alt: 'Urban cityscape at sunset',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
+    alt: 'Abstract geometric pattern',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
+    alt: 'Mountain landscape',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
+    alt: 'Minimalist design elements',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
+    alt: 'Ocean waves and beach',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
+    alt: 'Forest trees and sunlight',
+  },
+];
+
 const Index = () => {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <div className="w-full min-h-screen flex flex-col">
       <Hero 
@@ -77,13 +127,32 @@ const Index = () => {
       
       {/* Timeline Section */}
       <section id="timeline" className="w-full bg-black">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+        <ScrollFadeSection className="max-w-7xl mx-auto px-6 py-16">
           <h2 className="text-3xl font-extralight text-white text-center mb-4">Project Timeline</h2>
           <p className="text-white/60 text-center mb-12 max-w-xl mx-auto">
             Track progress through our orbital visualization. Click on nodes to explore details.
           </p>
-        </div>
+        </ScrollFadeSection>
         <RadialOrbitalTimeline timelineData={timelineData} />
+      </section>
+
+      {/* Zoom Parallax Showcase Section */}
+      <section id="showcase" className="w-full bg-black relative">
+        <ScrollFadeSection className="relative h-screen flex items-center justify-center">
+          {/* Radial spotlight */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" />
+          
+          <div className="text-center z-10">
+            <h2 className="text-4xl md:text-5xl font-extralight text-white mb-4">
+              Visual Showcase
+            </h2>
+            <p className="text-white/60 text-lg font-light">
+              Scroll Down for Zoom Parallax
+            </p>
+          </div>
+        </ScrollFadeSection>
+        
+        <ZoomParallax images={parallaxImages} />
       </section>
     </div>
   );
