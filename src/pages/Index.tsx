@@ -7,11 +7,11 @@ import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
 import { AnimeNavBar } from "@/components/ui/anime-navbar";
 import { AiModelsList } from "@/components/ui/ai-models-preview";
 import { TechOrbitSection } from "@/components/ui/tech-orbit-section";
-import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard, FolderOpen, MessageSquare } from "lucide-react";
+import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard, FolderOpen, MessageSquare, Twitter, Linkedin, Github, Mail, Sparkles } from "lucide-react";
 import { BentoPricing } from "@/components/ui/bento-pricing";
 import ProjectsTimeline from "@/components/ui/projects-timeline";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
-
+import { Footer } from "@/components/ui/animated-footer";
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Timeline", url: "#timeline", icon: Layers },
@@ -274,6 +274,25 @@ const Index = () => {
       <section id="testimonials">
         <TestimonialsSection />
       </section>
+
+      {/* Footer */}
+      <Footer
+        brandName="Neural Canvas"
+        brandDescription="Where algorithms become art. Building beautiful, intelligent interfaces with cutting-edge AI and design."
+        socialLinks={[
+          { icon: <Twitter className="w-5 h-5" />, href: "https://twitter.com", label: "Twitter" },
+          { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com", label: "LinkedIn" },
+          { icon: <Github className="w-5 h-5" />, href: "https://github.com", label: "GitHub" },
+          { icon: <Mail className="w-5 h-5" />, href: "mailto:hello@neuralcanvas.ai", label: "Email" },
+        ]}
+        navLinks={[
+          { label: "Home", href: "#home" },
+          { label: "Timeline", href: "#timeline" },
+          { label: "Showcase", href: "#showcase" },
+          { label: "Pricing", href: "#pricing" },
+        ]}
+        brandIcon={<Sparkles className="w-32 h-32" strokeWidth={1} />}
+      />
     </div>
   );
 };
