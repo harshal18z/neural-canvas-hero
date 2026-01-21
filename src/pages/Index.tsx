@@ -4,7 +4,14 @@ import Hero from "@/components/ui/neural-network-hero";
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
-import { Calendar, Code, FileText, User, Clock } from "lucide-react";
+import { AnimeNavBar } from "@/components/ui/anime-navbar";
+import { Calendar, Code, FileText, User, Clock, Home, Layers, Image } from "lucide-react";
+
+const navItems = [
+  { name: "Home", url: "#home", icon: Home },
+  { name: "Timeline", url: "#timeline", icon: Layers },
+  { name: "Showcase", url: "#showcase", icon: Image },
+];
 
 const timelineData = [
   {
@@ -113,17 +120,21 @@ const Index = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col">
-      <Hero 
-        title="Where algorithms become art."
-        description="A minimal hero with a neural canvas — crisp, elegant, and quietly expressive. Built with React, Three.js, and a custom CPPN shader."
-        badgeText="Generative Surfaces"
-        badgeLabel="New"
-        ctaButtons={[
-          { text: "Get started", href: "#timeline", primary: true },
-          { text: "View showcase", href: "#showcase" }
-        ]}
-        microDetails={["Low‑weight font", "Tight tracking", "Subtle motion"]}
-      />
+      <AnimeNavBar items={navItems} defaultActive="Home" />
+      
+      <section id="home">
+        <Hero 
+          title="Where algorithms become art."
+          description="A minimal hero with a neural canvas — crisp, elegant, and quietly expressive. Built with React, Three.js, and a custom CPPN shader."
+          badgeText="Generative Surfaces"
+          badgeLabel="New"
+          ctaButtons={[
+            { text: "Get started", href: "#timeline", primary: true },
+            { text: "View showcase", href: "#showcase" }
+          ]}
+          microDetails={["Low‑weight font", "Tight tracking", "Subtle motion"]}
+        />
+      </section>
       
       {/* Timeline Section */}
       <section id="timeline" className="w-full bg-black">
