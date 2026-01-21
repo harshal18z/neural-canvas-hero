@@ -7,16 +7,17 @@ import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
 import { AnimeNavBar } from "@/components/ui/anime-navbar";
 import { AiModelsList } from "@/components/ui/ai-models-preview";
 import { TechOrbitSection } from "@/components/ui/tech-orbit-section";
-import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard } from "lucide-react";
+import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard, FolderOpen } from "lucide-react";
 import { BentoPricing } from "@/components/ui/bento-pricing";
+import ProjectsTimeline from "@/components/ui/projects-timeline";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Timeline", url: "#timeline", icon: Layers },
   { name: "Tech", url: "#showcase", icon: Image },
   { name: "Models", url: "#models", icon: Brain },
+  { name: "Projects", url: "#projects", icon: FolderOpen },
   { name: "Pricing", url: "#pricing", icon: CreditCard },
-  { name: "Stack", url: "#tech-stack", icon: Cpu },
 ];
 
 const timelineData = [
@@ -185,7 +186,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex flex-col">
+    <div className="w-full min-h-screen flex flex-col bg-background">
       <AnimeNavBar items={navItems} defaultActive="Home" />
       
       <section id="home">
@@ -203,10 +204,10 @@ const Index = () => {
       </section>
       
       {/* Timeline Section */}
-      <section id="timeline" className="w-full bg-black">
+      <section id="timeline" className="w-full bg-background dark:bg-black">
         <ScrollFadeSection className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-extralight text-white text-center mb-4">Project Timeline</h2>
-          <p className="text-white/60 text-center mb-12 max-w-xl mx-auto">
+          <h2 className="text-3xl font-extralight text-foreground text-center mb-4">Project Timeline</h2>
+          <p className="text-muted-foreground text-center mb-12 max-w-xl mx-auto">
             Track progress through our orbital visualization. Click on nodes to explore details.
           </p>
         </ScrollFadeSection>
@@ -214,16 +215,16 @@ const Index = () => {
       </section>
 
       {/* Zoom Parallax Showcase Section */}
-      <section id="showcase" className="w-full bg-black relative">
+      <section id="showcase" className="w-full bg-background dark:bg-black relative">
         <ScrollFadeSection className="relative h-screen flex items-center justify-center">
           {/* Radial spotlight */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.03)_0%,_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" />
           
           <div className="text-center z-10">
-            <h2 className="text-4xl md:text-5xl font-extralight text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-extralight text-foreground mb-4">
               Visual Showcase
             </h2>
-            <p className="text-white/60 text-lg font-light">
+            <p className="text-muted-foreground text-lg font-light">
               Scroll Down for Zoom Parallax
             </p>
           </div>
@@ -233,20 +234,27 @@ const Index = () => {
       </section>
 
       {/* AI Models Section */}
-      <section id="models" className="w-full bg-black py-24">
+      <section id="models" className="w-full bg-background dark:bg-black py-24">
         <ScrollFadeSection className="max-w-7xl mx-auto px-6">
           <AiModelsList models={aiModels} />
         </ScrollFadeSection>
       </section>
 
+      {/* Projects Section */}
+      <section id="projects" className="w-full bg-background dark:bg-black">
+        <ScrollFadeSection className="w-full">
+          <ProjectsTimeline />
+        </ScrollFadeSection>
+      </section>
+
       {/* Pricing Section */}
-      <section id="pricing" className="w-full bg-black py-24">
+      <section id="pricing" className="w-full bg-background dark:bg-black py-24">
         <ScrollFadeSection className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-extralight text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-extralight text-foreground mb-4">
               Simple Pricing
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Choose the perfect plan for your needs. Scale as you grow with flexible pricing options.
             </p>
           </div>
@@ -254,7 +262,7 @@ const Index = () => {
         </ScrollFadeSection>
       </section>
 
-      {/* 3D Tech Stack Orbit Section */}
+      {/* 3D Tech Stack Orbit Section - Removed from nav, still at end */}
       <TechOrbitSection />
     </div>
   );
