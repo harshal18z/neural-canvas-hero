@@ -37,12 +37,12 @@ const techLogos = [
 
 export function TechOrbitSection() {
   return (
-    <section id="tech-stack" className="w-full bg-black py-24">
+    <section className="w-full bg-background dark:bg-black py-24">
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-extralight text-white mb-4">
+        <h2 className="text-3xl md:text-4xl font-extralight text-foreground mb-4">
           Technologies & Tools
         </h2>
-        <p className="text-white/60 text-lg font-light max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-lg font-light max-w-2xl mx-auto">
           A constellation of technologies powering modern development
         </p>
       </div>
