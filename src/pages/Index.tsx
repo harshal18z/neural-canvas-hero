@@ -14,8 +14,9 @@ import ProjectsTimeline from "@/components/ui/projects-timeline";
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Timeline", url: "#timeline", icon: Layers },
-  { name: "Tech", url: "#showcase", icon: Image },
+  { name: "Showcase", url: "#showcase", icon: Image },
   { name: "Models", url: "#models", icon: Brain },
+  { name: "Tech", url: "#tech", icon: Cpu },
   { name: "Projects", url: "#projects", icon: FolderOpen },
   { name: "Pricing", url: "#pricing", icon: CreditCard },
 ];
@@ -240,14 +241,19 @@ const Index = () => {
         </ScrollFadeSection>
       </section>
 
-      {/* Projects Section */}
+      {/* 3D Tech Stack Orbit Section */}
+      <section id="tech">
+        <TechOrbitSection />
+      </section>
+
+      {/* Featured Projects Section */}
       <section id="projects" className="w-full bg-background dark:bg-black">
         <ScrollFadeSection className="w-full">
           <ProjectsTimeline />
         </ScrollFadeSection>
       </section>
 
-      {/* Pricing Section */}
+      {/* Simple Pricing Section */}
       <section id="pricing" className="w-full bg-background dark:bg-black py-24">
         <ScrollFadeSection className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -261,9 +267,6 @@ const Index = () => {
           <BentoPricing />
         </ScrollFadeSection>
       </section>
-
-      {/* 3D Tech Stack Orbit Section - Removed from nav, still at end */}
-      <TechOrbitSection />
     </div>
   );
 };
