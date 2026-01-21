@@ -7,9 +7,10 @@ import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
 import { AnimeNavBar } from "@/components/ui/anime-navbar";
 import { AiModelsList } from "@/components/ui/ai-models-preview";
 import { TechOrbitSection } from "@/components/ui/tech-orbit-section";
-import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard, FolderOpen } from "lucide-react";
+import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard, FolderOpen, MessageSquare } from "lucide-react";
 import { BentoPricing } from "@/components/ui/bento-pricing";
 import ProjectsTimeline from "@/components/ui/projects-timeline";
+import { TestimonialsSection } from "@/components/ui/testimonials-section";
 
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
@@ -19,6 +20,7 @@ const navItems = [
   { name: "Tech", url: "#tech", icon: Cpu },
   { name: "Projects", url: "#projects", icon: FolderOpen },
   { name: "Pricing", url: "#pricing", icon: CreditCard },
+  { name: "Testimonials", url: "#testimonials", icon: MessageSquare },
 ];
 
 const timelineData = [
@@ -266,6 +268,11 @@ const Index = () => {
           </div>
           <BentoPricing />
         </ScrollFadeSection>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials">
+        <TestimonialsSection />
       </section>
     </div>
   );
