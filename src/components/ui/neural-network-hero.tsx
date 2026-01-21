@@ -93,17 +93,17 @@ const fragmentShader = `
     
     // Combine with dark background
     vec3 background = vec3(0.02, 0.02, 0.05);
-    vec3 finalColor = background + aurora * intensity * 0.7 + vec3(0.3, 0.4, 1.0) * glow * 0.3;
+    vec3 finalColor = background + aurora * intensity * 1.2 + vec3(0.3, 0.4, 1.0) * glow * 0.5;
     
     // Add subtle light ray from top
     float ray = smoothstep(0.4, 0.6, uv.x) * smoothstep(0.8, 0.4, uv.x);
     ray *= smoothstep(1.0, 0.3, uv.y);
     ray *= (0.5 + 0.5 * snoise(vec2(uv.x * 5.0, time)));
-    finalColor += vec3(0.5, 0.6, 1.0) * ray * 0.15;
+    finalColor += vec3(0.5, 0.6, 1.0) * ray * 0.25;
     
     // Vignette
     float vignette = 1.0 - smoothstep(0.3, 1.2, length(uv - 0.5) * 1.2);
-    finalColor *= vignette * 0.8 + 0.2;
+    finalColor *= vignette * 0.9 + 0.1;
     
     gl_FragColor = vec4(finalColor, 1.0);
   }
@@ -129,8 +129,8 @@ function ShaderPlane() {
   });
 
   return (
-    <mesh ref={meshRef} position={[0, -0.75, -0.5]}>
-      <planeGeometry args={[4, 4]} />
+    <mesh ref={meshRef} position={[0, 0, -0.5]}>
+      <planeGeometry args={[6, 6]} />
       <cPPNShaderMaterial ref={materialRef} side={THREE.DoubleSide} />
     </mesh>
   );
