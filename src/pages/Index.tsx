@@ -12,6 +12,7 @@ import { BentoPricing } from "@/components/ui/bento-pricing";
 import ProjectsTimeline from "@/components/ui/projects-timeline";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
 import { Footer } from "@/components/ui/animated-footer";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "Timeline", url: "#timeline", icon: Layers },
@@ -278,21 +279,26 @@ const Index = () => {
       {/* Footer */}
       <Footer
         brandName="Neural Canvas"
-        brandDescription="Where algorithms become art. Building beautiful, intelligent interfaces with cutting-edge AI and design."
+        brandDescription="AI-powered design platform for modern creators. Create stunning interfaces optimized for performance and aesthetics."
         socialLinks={[
-          { icon: <Twitter className="w-5 h-5" />, href: "https://twitter.com", label: "Twitter" },
-          { icon: <Linkedin className="w-5 h-5" />, href: "https://linkedin.com", label: "LinkedIn" },
-          { icon: <Github className="w-5 h-5" />, href: "https://github.com", label: "GitHub" },
-          { icon: <Mail className="w-5 h-5" />, href: "mailto:hello@neuralcanvas.ai", label: "Email" },
+          { icon: <Twitter className="w-6 h-6" />, href: "https://twitter.com", label: "Twitter" },
+          { icon: <Linkedin className="w-6 h-6" />, href: "https://linkedin.com", label: "LinkedIn" },
+          { icon: <Github className="w-6 h-6" />, href: "https://github.com", label: "GitHub" },
+          { icon: <Mail className="w-6 h-6" />, href: "mailto:hello@neuralcanvas.ai", label: "Email" },
         ]}
         navLinks={[
-          { label: "Home", href: "#home" },
-          { label: "Timeline", href: "#timeline" },
-          { label: "Showcase", href: "#showcase" },
           { label: "Pricing", href: "#pricing" },
+          { label: "Projects", href: "#projects" },
+          { label: "About", href: "#home" },
+          { label: "Contact", href: "mailto:hello@neuralcanvas.ai" },
         ]}
-        brandIcon={<Sparkles className="w-32 h-32" strokeWidth={1} />}
+        brandIcon={<Sparkles className="w-12 h-12 text-neutral-800" strokeWidth={1.5} />}
+        creatorName="Neural Canvas"
+        creatorUrl="https://neuralcanvas.ai"
       />
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 };
