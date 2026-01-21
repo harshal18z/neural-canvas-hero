@@ -278,7 +278,7 @@ const Index = () => {
 
       {/* Footer */}
       <Footer
-        brandName="Neural Canvas"
+        brandName="CodeVertex"
         brandDescription="AI-powered design platform for modern creators. Create stunning interfaces optimized for performance and aesthetics."
         socialLinks={[
           { icon: <Twitter className="w-6 h-6" />, href: "https://twitter.com", label: "Twitter" },
@@ -293,8 +293,8 @@ const Index = () => {
           { label: "Contact", href: "mailto:hello@neuralcanvas.ai" },
         ]}
         brandIcon={<Sparkles className="w-12 h-12 text-neutral-800" strokeWidth={1.5} />}
-        creatorName="Neural Canvas"
-        creatorUrl="https://neuralcanvas.ai"
+        creatorName="CodeVertex"
+        creatorUrl="https://codevertex.ai"
       />
 
       {/* Scroll to Top Button */}
