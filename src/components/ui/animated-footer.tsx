@@ -38,103 +38,105 @@ export const Footer = ({
   return (
     <footer
       className={cn(
-        "w-full relative bg-neutral-950 text-white pt-20 pb-4 overflow-hidden",
+        "w-full relative bg-neutral-950 text-white pt-20 pb-6 overflow-hidden min-h-[600px]",
         className
       )}
     >
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-start justify-between gap-12 mb-16">
-          <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-12">
-            <div className="space-y-6 max-w-md">
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <span className="text-3xl font-bold tracking-tighter bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
-                    {brandName}
-                  </span>
-                </div>
-              </div>
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Centered content */}
+        <div className="flex flex-col items-center text-center gap-8 mb-16">
+          {/* Brand name */}
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+            {brandName}
+          </h2>
 
-              <p className="text-base text-neutral-400 leading-relaxed">
-                {brandDescription}
-              </p>
-            </div>
-
-            {socialLinks.length > 0 && (
-              <div className="flex flex-wrap gap-3">
-                {socialLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3.5 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group relative overflow-hidden border border-white/5 hover:border-white/10"
-                  >
-                    <div className="relative z-10 text-neutral-400 group-hover:text-white transition-colors duration-300">
-                      {link.icon}
-                    </div>
-                    <span className="sr-only">{link.label}</span>
-                  </a>
-                ))}
-              </div>
-            )}
-
-            {navLinks.length > 0 && (
-              <nav className="flex flex-wrap gap-x-8 gap-y-4">
-                {navLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.href}
-                    className="text-base text-neutral-400 hover:text-white transition-colors duration-300 relative group"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </nav>
-            )}
-          </div>
-        </div>
-
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-neutral-500">
-            ©{new Date().getFullYear()} {brandName}. All rights reserved.
+          {/* Description */}
+          <p className="text-base md:text-lg text-neutral-400 leading-relaxed max-w-xl">
+            {brandDescription}
           </p>
 
-          {creatorName && creatorUrl && (
-            <div className="flex items-center gap-2 text-sm text-neutral-500">
-              <a
-                href={creatorUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300"
-              >
-                Crafted by {creatorName}
-              </a>
+          {/* Social links */}
+          {socialLinks.length > 0 && (
+            <div className="flex items-center justify-center gap-6">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-400 hover:text-white transition-colors duration-300"
+                >
+                  {link.icon}
+                  <span className="sr-only">{link.label}</span>
+                </a>
+              ))}
             </div>
+          )}
+
+          {/* Nav links */}
+          {navLinks.length > 0 && (
+            <nav className="flex flex-wrap items-center justify-center gap-8">
+              {navLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="text-base text-neutral-400 hover:text-white transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
           )}
         </div>
       </div>
 
-      {/* Large background text - FIXED */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center overflow-hidden pointer-events-none select-none">
-        <span className="text-[25vw] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-t from-white/[0.03] to-transparent whitespace-nowrap translate-y-[40%]">
+      {/* Large background text */}
+      <div className="absolute bottom-24 left-0 right-0 flex justify-center overflow-hidden pointer-events-none select-none">
+        <span className="text-[18vw] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-t from-white/[0.04] to-transparent whitespace-nowrap">
           {brandName.toUpperCase()}
         </span>
       </div>
 
-      {/* Bottom logo */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 pointer-events-none">
-        <div className="text-white/[0.02] transform scale-150">
-          {brandIcon || (
-            <NotepadTextDashed className="w-40 h-40" strokeWidth={0.5} />
-          )}
+      {/* Centered logo icon */}
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 pointer-events-none">
+        <div className="relative">
+          {/* Glow effect */}
+          <div className="absolute inset-0 bg-white/10 rounded-3xl blur-2xl scale-150" />
+          {/* Icon container */}
+          <div className="relative bg-gradient-to-b from-neutral-800 to-neutral-900 p-6 rounded-3xl border border-white/10 shadow-2xl">
+            <div className="bg-gradient-to-b from-white to-neutral-200 p-4 rounded-2xl">
+              {brandIcon || (
+                <NotepadTextDashed className="w-12 h-12 text-neutral-800" strokeWidth={1.5} />
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Bottom line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      {/* Bottom bar with copyright */}
+      <div className="absolute bottom-0 left-0 right-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-neutral-500">
+              ©{new Date().getFullYear()} {brandName}. All rights reserved.
+            </p>
 
-      {/* Bottom shadow */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-neutral-950 to-transparent pointer-events-none" />
+            {creatorName && creatorUrl && (
+              <a
+                href={creatorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-neutral-500 hover:text-white transition-colors duration-300"
+              >
+                Crafted by {creatorName}
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* Bottom gradient line */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      </div>
     </footer>
   );
 };
