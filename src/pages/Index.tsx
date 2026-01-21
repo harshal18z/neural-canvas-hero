@@ -3,11 +3,11 @@ import Lenis from "@studio-freight/lenis";
 import Hero from "@/components/ui/neural-network-hero";
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
-import { ScrollFadeSection } from "@/components/ui/scroll-fade-section";
+import { ScrollFadeSection, StaggerContainer, StaggerItem } from "@/components/ui/scroll-fade-section";
 import { AnimeNavBar } from "@/components/ui/anime-navbar";
 import { AiModelsList } from "@/components/ui/ai-models-preview";
 import { TechOrbitSection } from "@/components/ui/tech-orbit-section";
-import { Calendar, Code, FileText, User, Clock, Home, Layers, Image, Brain, Cpu, CreditCard, FolderOpen, MessageSquare, Twitter, Linkedin, Github, Mail, Sparkles } from "lucide-react";
+import { Calendar, Code, FileText, User, Clock, Home, Brain, CreditCard, FolderOpen, Twitter, Linkedin, Github, Mail, Sparkles } from "lucide-react";
 import { BentoPricing } from "@/components/ui/bento-pricing";
 import ProjectsTimeline from "@/components/ui/projects-timeline";
 import { TestimonialsSection } from "@/components/ui/testimonials-section";
@@ -205,29 +205,39 @@ const Index = () => {
       
       {/* Timeline Section */}
       <section id="timeline" className="w-full bg-background dark:bg-black">
-        <ScrollFadeSection className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-extralight text-foreground text-center mb-4">Project Timeline</h2>
-          <p className="text-muted-foreground text-center mb-12 max-w-xl mx-auto">
-            Track progress through our orbital visualization. Click on nodes to explore details.
-          </p>
+        <StaggerContainer className="max-w-7xl mx-auto px-6 py-16">
+          <StaggerItem>
+            <h2 className="text-3xl font-extralight text-foreground text-center mb-4">Project Timeline</h2>
+          </StaggerItem>
+          <StaggerItem>
+            <p className="text-muted-foreground text-center mb-12 max-w-xl mx-auto">
+              Track progress through our orbital visualization. Click on nodes to explore details.
+            </p>
+          </StaggerItem>
+        </StaggerContainer>
+        <ScrollFadeSection variant="scale">
+          <RadialOrbitalTimeline timelineData={timelineData} />
         </ScrollFadeSection>
-        <RadialOrbitalTimeline timelineData={timelineData} />
       </section>
 
       {/* Zoom Parallax Showcase Section */}
       <section id="showcase" className="w-full bg-background dark:bg-black relative">
-        <ScrollFadeSection className="relative h-screen flex items-center justify-center">
+        <ScrollFadeSection variant="blur" className="relative h-screen flex items-center justify-center">
           {/* Radial spotlight */}
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.03)_0%,_transparent_70%)] dark:bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" />
           
-          <div className="text-center z-10">
-            <h2 className="text-4xl md:text-5xl font-extralight text-foreground mb-4">
-              Visual Showcase
-            </h2>
-            <p className="text-muted-foreground text-lg font-light">
-              Scroll Down for Zoom Parallax
-            </p>
-          </div>
+          <StaggerContainer className="text-center z-10">
+            <StaggerItem variant="fadeUp">
+              <h2 className="text-4xl md:text-5xl font-extralight text-foreground mb-4">
+                Visual Showcase
+              </h2>
+            </StaggerItem>
+            <StaggerItem variant="fadeUp">
+              <p className="text-muted-foreground text-lg font-light">
+                Scroll Down for Zoom Parallax
+              </p>
+            </StaggerItem>
+          </StaggerContainer>
         </ScrollFadeSection>
         
         <ZoomParallax images={parallaxImages} />
@@ -235,41 +245,47 @@ const Index = () => {
 
       {/* AI Models Section */}
       <section id="models" className="w-full bg-background dark:bg-black py-24">
-        <ScrollFadeSection className="max-w-7xl mx-auto px-6">
+        <ScrollFadeSection variant="fadeUp" className="max-w-7xl mx-auto px-6">
           <AiModelsList models={aiModels} />
         </ScrollFadeSection>
       </section>
 
       {/* 3D Tech Stack Orbit Section */}
       <section id="tech">
-        <TechOrbitSection />
+        <ScrollFadeSection variant="scale">
+          <TechOrbitSection />
+        </ScrollFadeSection>
       </section>
 
       {/* Featured Projects Section */}
       <section id="projects" className="w-full bg-background dark:bg-black">
-        <ScrollFadeSection className="w-full">
+        <ScrollFadeSection variant="fadeUp" className="w-full">
           <ProjectsTimeline />
         </ScrollFadeSection>
       </section>
 
       {/* Simple Pricing Section */}
       <section id="pricing" className="w-full bg-background dark:bg-black py-24">
-        <ScrollFadeSection className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
+        <StaggerContainer className="max-w-7xl mx-auto px-6">
+          <StaggerItem className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-extralight text-foreground mb-4">
               Simple Pricing
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Choose the perfect plan for your needs. Scale as you grow with flexible pricing options.
             </p>
-          </div>
-          <BentoPricing />
-        </ScrollFadeSection>
+          </StaggerItem>
+          <StaggerItem>
+            <BentoPricing />
+          </StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* Testimonials Section */}
       <section id="testimonials">
-        <TestimonialsSection />
+        <ScrollFadeSection variant="fadeUp">
+          <TestimonialsSection />
+        </ScrollFadeSection>
       </section>
 
       {/* Footer */}

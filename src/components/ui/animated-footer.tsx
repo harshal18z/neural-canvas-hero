@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 import { NotepadTextDashed } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +26,11 @@ interface FooterProps {
   className?: string;
 }
 
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 }
+};
+
 export const Footer = ({
   brandName = "YourBrand",
   brandDescription = "Your description here",
@@ -44,50 +50,75 @@ export const Footer = ({
     >
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered content */}
-        <div className="flex flex-col items-center text-center gap-8 mb-16">
+        <motion.div 
+          className="flex flex-col items-center text-center gap-8 mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ staggerChildren: 0.1 }}
+        >
           {/* Brand name */}
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold tracking-tight text-white"
+            variants={fadeUpVariants}
+            transition={{ duration: 0.5 }}
+          >
             {brandName}
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p className="text-base md:text-lg text-neutral-400 leading-relaxed max-w-xl">
+          <motion.p 
+            className="text-base md:text-lg text-neutral-400 leading-relaxed max-w-xl"
+            variants={fadeUpVariants}
+            transition={{ duration: 0.5 }}
+          >
             {brandDescription}
-          </p>
+          </motion.p>
 
           {/* Social links */}
           {socialLinks.length > 0 && (
-            <div className="flex items-center justify-center gap-6">
+            <motion.div 
+              className="flex items-center justify-center gap-6"
+              variants={fadeUpVariants}
+              transition={{ duration: 0.5 }}
+            >
               {socialLinks.map((link, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-400 hover:text-white transition-colors duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  transition={{ type: "spring", stiffness: 400 }}
                 >
                   {link.icon}
                   <span className="sr-only">{link.label}</span>
-                </a>
+                </motion.a>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Nav links */}
           {navLinks.length > 0 && (
-            <nav className="flex flex-wrap items-center justify-center gap-8">
+            <motion.nav 
+              className="flex flex-wrap items-center justify-center gap-8"
+              variants={fadeUpVariants}
+              transition={{ duration: 0.5 }}
+            >
               {navLinks.map((link, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={link.href}
                   className="text-base text-neutral-400 hover:text-white transition-colors duration-300"
+                  whileHover={{ y: -2 }}
                 >
                   {link.label}
-                </a>
+                </motion.a>
               ))}
-            </nav>
+            </motion.nav>
           )}
-        </div>
+        </motion.div>
       </div>
 
       {/* Large background text */}
