@@ -15,13 +15,9 @@ import { Footer } from "@/components/ui/animated-footer";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 const navItems = [
   { name: "Home", url: "#home", icon: Home },
-  { name: "Timeline", url: "#timeline", icon: Layers },
-  { name: "Showcase", url: "#showcase", icon: Image },
   { name: "Models", url: "#models", icon: Brain },
-  { name: "Tech", url: "#tech", icon: Cpu },
   { name: "Projects", url: "#projects", icon: FolderOpen },
   { name: "Pricing", url: "#pricing", icon: CreditCard },
-  { name: "Testimonials", url: "#testimonials", icon: MessageSquare },
 ];
 
 const timelineData = [
